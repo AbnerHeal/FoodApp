@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_ready"
+    app:startDestination="@id/fragment_checkout">
+    <fragment
+        android:id="@+id/fragment_checkout"
+        android:name="com.example.foodapp.presentation.ui.checkout.CheckoutFragment"
+        android:label="CheckoutFragment"
+        tools:layout="@layout/fragment_checkout">
+
+        <action
+            android:id="@+id/action_fragment_checkout_to_fragment_ready"
+            app:destination="@id/fragment_ready" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment_ready"
+        android:name="com.example.foodapp.presentation.ui.screen.ReadyFragment"
+        android:label="ReadyFragment"
+        tools:layout="@layout/fragment_ready">
+        <action
+            android:id="@+id/action_fragment_ready_to_fragment_camera"
+            app:destination="@id/fragment_camera" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment_camera"
+        android:name="com.example.foodapp.presentation.ui.camera.CameraFragment"
+        android:label="CameraFragment"
+        tools:layout="@layout/fragment_camera">
+        <action
+            android:id="@+id/action_fragment_camera_to_fragment_showImage"
+            app:destination="@id/fragment_showImage">
+            <argument
+                android:name="image"
+                app:argType="android.graphics.Bitmap"/>
+        </action>
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment_showImage"
+        android:name="com.example.foodapp.presentation.ui.screen.ShowImageFragment"
+        android:label="ShowImageFragment"
+        tools:layout="@layout/fragment_show_image">
+        <argument
+            android:name="image"
+            app:argType="android.graphics.Bitmap"/>
+        <action
+            android:id="@+id/action_fragment_showImage_to_fragment_payment"
+            app:destination="@id/fragment_payment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment_payment"
+        android:name="com.example.foodapp.presentation.ui.screen.PaymentFragment"
+        android:label="PaymentFragment"
+        tools:layout="@layout/fragment_payment"/>
+
+</navigation>

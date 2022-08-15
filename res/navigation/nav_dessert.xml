@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_dessert"
+    app:startDestination="@id/fragment_dessert">
+
+    <fragment
+        android:id="@+id/fragment_dessert"
+        android:name="com.example.foodapp.presentation.ui.dessert.DessertFragment"
+        android:label="DessertFragment"
+        tools:layout="@layout/fragment_dessert">
+        <action
+            android:id="@+id/action_dessert_to_flavor"
+            app:destination="@id/fragment_flavor" >
+            <argument
+                android:name="dessert"
+                app:argType="com.example.foodapp.presentation.models.Dessert"
+                app:nullable="true"
+                android:defaultValue="@null"
+                />
+        </action>
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment_flavor"
+        android:name="com.example.foodapp.presentation.ui.flavor.FlavorFragment"
+        android:label="FlavorFragment"
+        tools:layout="@layout/fragment_flavor">
+        <argument
+            android:name="dessert"
+            app:argType="com.example.foodapp.presentation.models.Dessert"/>
+
+
+        <action
+            android:id="@+id/action_fragment_flavor_to_nav_ready"
+            app:destination="@id/nav_ready" />
+    </fragment>
+
+
+
+        <include app:graph="@navigation/nav_ready"/>
+</navigation>
